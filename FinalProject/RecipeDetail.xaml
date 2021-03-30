@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FinalProject.RecipeDetail">
+  <ContentPage.Content>
+      <StackLayout>
+            <Label Text="{Binding SlctdResult}" FontSize="30" FontAttributes="Bold"/>
+            <Label Text="Ingredients:" FontSize="15" FontAttributes="Italic"/>
+            <Frame>
+                <ListView ItemsSource="{Binding Ingredient}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Label Grid.Column="0"
+                                    Text="{Binding name}"/>
+                                    <Label Grid.Column="1"
+                                       Text="{Binding amount.us.value}"/>
+                                    <Label Grid.Column="2"
+                                       Text="{Binding amount.us.unit}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+            <Label Text="Instructions:" FontSize="15" FontAttributes="Italic"/>
+            <Frame>
+                <ListView ItemsSource="{Binding Instructions.steps}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding step}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+            <Button x:Name ="button" Clicked="button_Clicked"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

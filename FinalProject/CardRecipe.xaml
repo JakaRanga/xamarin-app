@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FinalProject.CardRecipe">
+
+    <ContentView.Content>
+        <Frame IsClippedToBounds="True"
+               HasShadow="True"
+               Padding="0"
+               BackgroundColor="White" >
+            <Frame.OutlineColor>
+                <OnPlatform x:TypeArguments="Color"
+                        Android="Gray"
+                        iOS="Gray"/>
+            </Frame.OutlineColor>
+            <Frame.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                         Android="5" 
+                         iOS="5"/>
+            </Frame.Margin>
+            <StackLayout Orientation="Horizontal">
+                <Grid VerticalOptions="CenterAndExpand"
+                     Padding="0"
+                     HorizontalOptions="FillAndExpand"
+                     BackgroundColor="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label FontAttributes="Bold"
+                       Grid.Row="0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       FontSize="16"
+                       Text="{Binding title, Mode = TwoWay}">
+                        <Label.LineBreakMode>
+                            <OnPlatform x:TypeArguments="LineBreakMode"
+                              Android="NoWrap" 
+                              iOS="TailTruncation"/>
+                        </Label.LineBreakMode>
+                    </Label>
+                    <BoxView Grid.Row="1" Color="Gray"
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="1"/>
+                    <Grid Grid.Row="2"
+                       BackgroundColor="Transparent"
+                       Padding="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.RowSpan="2"
+                               Grid.Column="0"
+                            Source="{Binding image}"/>
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                              Text="Ready in:"/>
+                        <Label Grid.Row="0"
+                              Grid.Column="2"
+                              Text="{Binding readyInMinutes, Mode = TwoWay}"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="Servings:"/>
+                        <Label Grid.Row="1"
+                               Grid.Column="2"
+                               Text="{Binding servings}"/>
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+    
+</ContentView>
